@@ -1,14 +1,7 @@
 {
-  "posts": [
-    { "id": 1, "title": "Post 1" },
-    { "id": 2, "title": "Post 2" },
-    { "id": 3, "title": "Post 3" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 },
-    { "id": 2, "body": "some comment", "postId": 1 }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "province": [
+    { "id": 1, "Jabar": "Jawa Barat" },
+    { "id": 2, "Jateng": "Jawa Tengah" },
+    { "id": 3, "Jatim": "Jawa Timur" }
+  ]
 }
