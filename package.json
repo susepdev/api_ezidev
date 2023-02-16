@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/susepdev/api_ezidev/issues"
   },
-  "homepage": "https://github.com/susepdev/api_ezidev#readme"
+  "homepage": "https://github.com/susepdev/api_ezidev#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
