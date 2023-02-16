@@ -1,0 +1,19 @@
+{
+  "name": "api_ezidev",
+  "version": "1.0.0",
+  "description": "Fake API EziDev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/susepdev/api_ezidev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/susepdev/api_ezidev/issues"
+  },
+  "homepage": "https://github.com/susepdev/api_ezidev#readme"
+}
