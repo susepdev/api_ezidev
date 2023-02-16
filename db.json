@@ -1,7 +1,7 @@
 {
   "province": [
-    { "id": 1, "Jabar": "Jawa Barat" },
-    { "id": 2, "Jateng": "Jawa Tengah" },
-    { "id": 3, "Jatim": "Jawa Timur" }
+    { "id": 1, "name": "Jawa Barat" },
+    { "id": 2, "name": "Jawa Tengah" },
+    { "id": 3, "name": "Jawa Timur" }
   ]
 }
