@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('alias');
             $table->string('name');
-            $table->string('desc');
-            $table->enum('is_active', [true, false]);
+            $table->text('desc');
+            $table->boolean('is_active')->default(false);
             $table->string('adr');
             $table->string('prov');
             $table->string('owner');
             $table->string('hp');
-            $table->timestamp('last_updated');
             $table->string('updated_by');
+            $table->timestamps();
         });
     }
 

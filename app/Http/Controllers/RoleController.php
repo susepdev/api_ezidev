@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\TimezoneResource;
-use App\Models\Timezone;
-use Carbon\Carbon;
+use App\Http\Resources\RoleResource;
+use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class TimezoneController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class TimezoneController extends Controller
     public function index()
     {
         return response()->json([
-            'message' => "Data Timezone",
-            'data' => TimezoneResource::collection(Timezone::all())
+            'message' => 'Data Role',
+            'data' => RoleResource::collection(Role::all())
         ]);
     }
 
@@ -29,13 +28,17 @@ class TimezoneController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'=> 'required',
-            'updated_by'=> 'required',
+            'name' => 'required',
+            'desc' => 'required',
+            'updated_by' => 'required'
         ]);
 
-        Timezone::create($data);
+        $input = Role::create($data);
 
-        return response()->json("Created Time Zone succes");
+        return response()->json([
+            'message' => 'Created Role Success',
+            'data' => $input
+        ]);
     }
 
     /**
@@ -43,7 +46,7 @@ class TimezoneController extends Controller
      */
     public function show(string $id)
     {
-        return new TimezoneResource(Timezone::findOrFail($id));
+        return new RoleResource(Role::findOrFail($id));
     }
 
     /**
@@ -52,13 +55,16 @@ class TimezoneController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'name'=> 'required',
-            'updated_by'=> 'required',
+            'name' => 'required',
+            'desc' => 'required',
+            'updated_by' => 'required'
         ]);
 
-        Timezone::where('id', $id)->update($data);
+        $input = Role::where('id', $id)->update($data);
 
-        return response()->json("updated succes");
+        return response()->json([
+            'message' => 'Updated Role Success'
+        ]);
     }
 
     /**
@@ -66,8 +72,8 @@ class TimezoneController extends Controller
      */
     public function destroy(string $id)
     {
-        Timezone::where('id', $id)->delete();
+        Role::where('id', $id)->delete();
 
-        return response("Time Zone Deleted");
+        return response("Delete Role Success");
     }
 }
