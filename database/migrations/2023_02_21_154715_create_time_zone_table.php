@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('time_zone', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamp('last_updated');
             $table->string('updated_by');
+            $table->timestamps();
         });
     }
 
