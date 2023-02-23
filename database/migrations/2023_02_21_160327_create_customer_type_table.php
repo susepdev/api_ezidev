@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('alias');
             $table->string('name');
-            $table->string('desc');
-            $table->enum('is_active', [true, false]);
-            $table->timestamp('last_updated');
+            $table->text('desc');
+            $table->boolean('is_active')->default(false);
             $table->string('updated_by');
+            $table->timestamps();
         });
     }
 
