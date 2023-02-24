@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\TimezoneResource;
-use App\Models\Timezone;
-use Carbon\Carbon;
+use App\Http\Resources\ProblemTypeResource;
+use App\Models\ProblemType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class TimezoneController extends Controller
+class ProblemTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class TimezoneController extends Controller
     public function index()
     {
         return response()->json([
-            'message' => "Data Timezone",
-            'data' => TimezoneResource::collection(Timezone::all())
+            'message' => 'Data Problem Type',
+            'date' => ProblemTypeResource::collection(ProblemType::all())
         ]);
     }
 
@@ -29,15 +28,17 @@ class TimezoneController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'=> 'required',
-            'updated_by'=> 'required',
+            'name' => 'required',
+            'desc' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        $input = Timezone::create($data);
+        $input = ProblemType::create($data);
 
         return response()->json([
-            'message' => "Create Time Zone Success",
-            'date' => $input
+            'message' => 'Create Problem Type Success',
+            'data' => $input
         ]);
     }
 
@@ -46,7 +47,7 @@ class TimezoneController extends Controller
      */
     public function show(string $id)
     {
-        return new TimezoneResource(Timezone::findOrFail($id));
+        return new ProblemTypeResource(ProblemType::FindOrFail($id));
     }
 
     /**
@@ -55,14 +56,16 @@ class TimezoneController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'name'=> 'required',
-            'updated_by'=> 'required',
+            'name' => 'required',
+            'desc' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        Timezone::where('id', $id)->update($data);
+        $input = ProblemType::where('id', $id)->update($data);
 
         return response()->json([
-            'message' => "Update Time Zone Success"
+            'message' => 'Update Problem Type Success'
         ]);
     }
 
@@ -71,10 +74,10 @@ class TimezoneController extends Controller
      */
     public function destroy(string $id)
     {
-        Timezone::where('id', $id)->delete();
+        ProblemType::where('id', $id)->delete();
 
         return response()->json([
-            'message' => 'Delete Time Zone Success'
+            'message' => 'Delete Problem Type Success'
         ]);
     }
 }

@@ -86,6 +86,8 @@ class EntityController extends Controller
     {
         Entity::where('id', $id)->delete();
 
-        return response("Entity Deleted");
+        return response()->json([
+            'message' => 'Delete Type Success'
+        ]);
     }
 }

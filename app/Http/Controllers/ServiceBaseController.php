@@ -74,6 +74,8 @@ class ServiceBaseController extends Controller
     {
         ServiceBase::where('id', $id)->delete();
 
-        return response("Delete Service Base Success");
+        return response()->json([
+            'message' => 'Delete Service Base Success'
+        ]);
     }
 }
