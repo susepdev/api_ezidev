@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerTypeController;
 use App\Http\Controllers\EntityController;
+use App\Http\Controllers\MachineVendorController;
 use App\Http\Controllers\PmPeriodController;
 use App\Http\Controllers\ProblemTypeController;
 use App\Http\Controllers\RoleController;
@@ -22,3 +24,5 @@ Route::apiResource('customer_type', CustomerTypeController::class);
 Route::apiResource('problem_type', ProblemTypeController::class);
 Route::apiResource('pm_period', PmPeriodController::class);
 Route::apiResource('service_type', ServiceTypeController::class);
+Route::apiResource('machine_vendor', MachineVendorController::class);
+Route::apiResource('customer', CustomerController::class);
