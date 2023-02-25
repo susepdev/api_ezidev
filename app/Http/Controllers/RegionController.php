@@ -72,7 +72,8 @@ class RegionController extends Controller
      */
     public function destroy(string $id)
     {
-        Region::where('id', $id)->delete();
+        $data = Region::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Region Success'

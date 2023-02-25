@@ -72,7 +72,8 @@ class ServiceTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        ServiceType::where('id', $id)->delete();
+        $data = ServiceType::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Service Type Success'

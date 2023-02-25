@@ -72,7 +72,8 @@ class DataSlaController extends Controller
      */
     public function destroy(string $id)
     {
-        DataSla::where('id', $id)->delete();
+        $data = DataSla::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Data SLA Success'

@@ -72,7 +72,8 @@ class SlaResolveController extends Controller
      */
     public function destroy(string $id)
     {
-        SlaResolve::where('id', $id)->delete();
+        $data = SlaResolve::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete SLA Resolve Success'

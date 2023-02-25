@@ -86,7 +86,8 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        Customer::where('id', $id)->delete();
+        $data = Customer::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Customer Success'

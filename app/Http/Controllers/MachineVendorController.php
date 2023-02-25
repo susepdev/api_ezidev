@@ -72,7 +72,8 @@ class MachineVendorController extends Controller
      */
     public function destroy(string $id)
     {
-        MachineVendor::where('id', $id)->delete();
+        $data = MachineVendor::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Machine Vendor Success'

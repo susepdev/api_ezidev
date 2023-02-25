@@ -72,7 +72,8 @@ class SlaPmController extends Controller
      */
     public function destroy(string $id)
     {
-        SlaPm::where('id', $id)->delete();
+        $data = SlaPm::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete SLA PM Success'

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BinLocationController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerTypeController;
@@ -44,3 +45,4 @@ Route::apiResource('sla_resolution', SlaResolutionController::class);
 Route::apiResource('sla_pm', SlaPmController::class);
 Route::apiResource('contract', ContractController::class);
 Route::apiResource('pm_code', PmCodeController::class);
+Route::apiResource('bin_location', BinLocationController::class);

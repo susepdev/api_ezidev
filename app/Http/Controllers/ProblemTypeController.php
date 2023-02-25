@@ -74,7 +74,8 @@ class ProblemTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        ProblemType::where('id', $id)->delete();
+        $data = ProblemType::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Problem Type Success'

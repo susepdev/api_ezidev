@@ -74,7 +74,8 @@ class PmPeriodController extends Controller
      */
     public function destroy(string $id)
     {
-        PmPeriod::where('id', $id)->delete();
+        $data = PmPeriod::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete PM Period Success'

@@ -72,7 +72,8 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        Role::where('id', $id)->delete();
+        $data = Role::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Role Success'

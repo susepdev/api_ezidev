@@ -71,7 +71,8 @@ class TimezoneController extends Controller
      */
     public function destroy(string $id)
     {
-        Timezone::where('id', $id)->delete();
+        $data = Timezone::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Time Zone Success'

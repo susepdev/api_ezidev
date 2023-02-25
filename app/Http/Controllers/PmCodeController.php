@@ -72,7 +72,8 @@ class PmCodeController extends Controller
      */
     public function destroy(string $id)
     {
-        PmCode::where('id', $id)->delete();
+        $data = PmCode::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete PM Code Success'

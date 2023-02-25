@@ -84,7 +84,8 @@ class EntityController extends Controller
      */
     public function destroy(string $id)
     {
-        Entity::where('id', $id)->delete();
+        $data = Entity::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Type Success'

@@ -76,7 +76,8 @@ class CustomerTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        CustomerType::where('id', $id)->delete();
+        $data = CustomerType::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Customer Type Success'

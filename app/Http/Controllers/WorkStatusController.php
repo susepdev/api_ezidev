@@ -70,7 +70,8 @@ class WorkStatusController extends Controller
      */
     public function destroy(string $id)
     {
-        WorkStatus::where('id', $id)->delete();
+        $data = WorkStatus::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Work Status Success'

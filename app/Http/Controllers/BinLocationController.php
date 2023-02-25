@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ServiceBaseResource;
-use App\Models\ServiceBase;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Resources\BinLocationResource;
+use App\Models\BinLocation;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
-class ServiceBaseController extends Controller
+class BinLocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class ServiceBaseController extends Controller
     public function index()
     {
         return response()->json([
-            'message' => 'Data Service Base',
-            'data' => ServiceBaseResource::collection(ServiceBase::all())
+            'message' => 'Data Bin Location',
+            'date' => BinLocationResource::collection(BinLocation::all())
         ]);
     }
 
@@ -29,14 +27,15 @@ class ServiceBaseController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'city' => 'required',
-            'updated_by' => 'required'
+            'desc' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        $input = ServiceBase::create($data);
+        $input = BinLocation::create($data);
 
         return response()->json([
-            'message' => 'Create Service Base Success',
+            'message' => 'Create Bin Location Success',
             'data' => $input
         ]);
     }
@@ -46,7 +45,7 @@ class ServiceBaseController extends Controller
      */
     public function show(string $id)
     {
-        return new ServiceBaseResource(ServiceBase::findOrFail($id));
+        return new BinLocationResource(BinLocation::FindOrFail($id));
     }
 
     /**
@@ -56,14 +55,15 @@ class ServiceBaseController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'city' => 'required',
-            'updated_by' => 'required'
+            'desc' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        $input = ServiceBase::where('id', $id)->update($data);
+        $input = BinLocation::where('id', $id)->update($data);
 
         return response()->json([
-            'message' => 'Update Service Base Success'
+            'message' => 'Update Bin Location Success'
         ]);
     }
 
@@ -72,11 +72,11 @@ class ServiceBaseController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = ServiceBase::FindOrFail($id);
+        $data = BinLocation::FindOrFail($id);
         $data->delete();
 
         return response()->json([
-            'message' => 'Delete Service Base Success'
+            'message' => 'Delete Bin Location Success'
         ]);
     }
 }

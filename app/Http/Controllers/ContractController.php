@@ -86,7 +86,8 @@ class ContractController extends Controller
      */
     public function destroy(string $id)
     {
-        Contract::where('id', $id)->delete();
+        $data = Contract::FindOrFail($id);
+        $data->delete();
 
         return response()->json([
             'message' => 'Delete Contract Success'
