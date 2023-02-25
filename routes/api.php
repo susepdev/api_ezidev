@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceBaseController;
 use App\Http\Controllers\ServiceTypeController;
 use App\Http\Controllers\TimezoneController;
+use App\Http\Controllers\WorkStatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,4 @@ Route::apiResource('pm_period', PmPeriodController::class);
 Route::apiResource('service_type', ServiceTypeController::class);
 Route::apiResource('machine_vendor', MachineVendorController::class);
 Route::apiResource('customer', CustomerController::class);
+Route::apiResource('work_status', WorkStatusController::class);
