@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerTypeController;
+use App\Http\Controllers\DataSlaController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\MachineVendorController;
 use App\Http\Controllers\PmPeriodController;
@@ -30,3 +31,4 @@ Route::apiResource('machine_vendor', MachineVendorController::class);
 Route::apiResource('customer', CustomerController::class);
 Route::apiResource('work_status', WorkStatusController::class);
 Route::apiResource('region', RegionController::class);
+Route::apiResource('data_sla', DataSlaController::class);
