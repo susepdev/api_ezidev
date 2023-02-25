@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerTypeController;
 use App\Http\Controllers\DataSlaController;
@@ -40,3 +41,4 @@ Route::apiResource('sla_response', SlaResponseController::class);
 Route::apiResource('sla_resolve', SlaResolveController::class);
 Route::apiResource('sla_resolution', SlaResolutionController::class);
 Route::apiResource('sla_pm', SlaPmController::class);
+Route::apiResource('contract', ContractController::class);
