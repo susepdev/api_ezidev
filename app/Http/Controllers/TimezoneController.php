@@ -34,9 +34,12 @@ class TimezoneController extends Controller
             'updated_by'=> 'required',
         ]);
 
-        Timezone::create($data);
+        $input = Timezone::create($data);
 
-        return response()->json("Created Time Zone succes");
+        return response()->json([
+            'message' => "Create Time Zone Success",
+            'date' => $input
+        ]);
     }
 
     /**
@@ -59,7 +62,9 @@ class TimezoneController extends Controller
 
         Timezone::where('id', $id)->update($data);
 
-        return response()->json("updated succes");
+        return response()->json([
+            'message' => "Update Time Zone Success"
+        ]);
     }
 
     /**
@@ -67,8 +72,11 @@ class TimezoneController extends Controller
      */
     public function destroy(string $id)
     {
-        Timezone::where('id', $id)->delete();
+        $data = Timezone::FindOrFail($id);
+        $data->delete();
 
-        return response("Time Zone Deleted");
+        return response()->json([
+            'message' => 'Delete Time Zone Success'
+        ]);
     }
 }

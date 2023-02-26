@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_type', function (Blueprint $table) {
+        Schema::create('region', function (Blueprint $table) {
             $table->id();
             $table->string('alias');
             $table->string('name');
-            $table->text('desc');
             $table->boolean('is_active')->default(false);
             $table->string('updated_by');
             $table->timestamps();
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_type');
+        Schema::dropIfExists('region');
     }
 };

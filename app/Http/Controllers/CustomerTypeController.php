@@ -12,56 +12,73 @@ class CustomerTypeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): Response
-    {
-        //
+        return response()->json([
+            'message' => 'Data Customer Type',
+            'data' => CustomerTypeResource::collection(CustomerType::all())
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'alias' => 'required',
+            'name' => 'required',
+            'desc' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required'
+        ]);
+
+        $input = CustomerType::create($data);
+
+        return response()->json([
+            'message' => 'Create Customer Type Success',
+            'data' => $input
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CustomerType $customerType): Response
+    public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CustomerType $customerType): Response
-    {
-        //
+        return new CustomerTypeResource(CustomerType::FindOrFail($id));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CustomerType $customerType): RedirectResponse
+    public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'alias' => 'required',
+            'name' => 'required',
+            'desc' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required'
+        ]);
+
+        $input = CustomerType::where('id', $id)->update($data);
+
+        return response()->json([
+            'message' => 'Update Customer Type Success'
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CustomerType $customerType): RedirectResponse
+    public function destroy(string $id)
     {
-        //
+        $data = CustomerType::FindOrFail($id);
+        $data->delete();
+
+        return response()->json([
+            'message' => 'Delete Customer Type Success'
+        ]);
     }
 }

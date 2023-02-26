@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\EntityResource;
-use App\Models\Entity;
+use App\Http\Resources\ProblemTypeResource;
+use App\Models\ProblemType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class EntityController extends Controller
+class ProblemTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,8 @@ class EntityController extends Controller
     public function index()
     {
         return response()->json([
-            'success' => true,
-            'message' => 'Data Entity',
-            'data' => EntityResource::collection(Entity::all())
+            'message' => 'Data Problem Type',
+            'date' => ProblemTypeResource::collection(ProblemType::all())
         ]);
     }
 
@@ -29,22 +28,16 @@ class EntityController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'alias' => 'required',
             'name' => 'required',
             'desc' => 'required',
             'is_active' => 'required',
-            'adr' => 'required',
-            'prov' => 'required',
-            'owner' => 'required',
-            'hp' => 'required',
             'updated_by' => 'required',
         ]);
 
-        $input = Entity::create($data);
+        $input = ProblemType::create($data);
 
         return response()->json([
-            'success' => true,
-            'message' => 'Created Entity Success',
+            'message' => 'Create Problem Type Success',
             'data' => $input
         ]);
     }
@@ -54,7 +47,7 @@ class EntityController extends Controller
      */
     public function show(string $id)
     {
-        return new EntityResource(Entity::findOrFail($id));
+        return new ProblemTypeResource(ProblemType::FindOrFail($id));
     }
 
     /**
@@ -63,22 +56,16 @@ class EntityController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'alias' => 'required',
             'name' => 'required',
             'desc' => 'required',
             'is_active' => 'required',
-            'adr' => 'required',
-            'prov' => 'required',
-            'owner' => 'required',
-            'hp' => 'required',
             'updated_by' => 'required',
         ]);
 
-        $input = Entity::where('id', $id)->update($data);
+        $input = ProblemType::where('id', $id)->update($data);
 
         return response()->json([
-            'success' => true,
-            'message' => 'Updated Entity Success'
+            'message' => 'Update Problem Type Success'
         ]);
     }
 
@@ -87,11 +74,11 @@ class EntityController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = Entity::FindOrFail($id);
+        $data = ProblemType::FindOrFail($id);
         $data->delete();
 
         return response()->json([
-            'message' => 'Delete Type Success'
+            'message' => 'Delete Problem Type Success'
         ]);
     }
 }

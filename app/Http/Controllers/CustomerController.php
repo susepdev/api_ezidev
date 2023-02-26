@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\EntityResource;
-use App\Models\Entity;
+use App\Http\Resources\CustomerResource;
+use App\Models\Customer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class EntityController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,8 @@ class EntityController extends Controller
     public function index()
     {
         return response()->json([
-            'success' => true,
-            'message' => 'Data Entity',
-            'data' => EntityResource::collection(Entity::all())
+            'message' => 'Data Customer',
+            'data' => CustomerResource::collection(Customer::all())
         ]);
     }
 
@@ -32,19 +31,19 @@ class EntityController extends Controller
             'alias' => 'required',
             'name' => 'required',
             'desc' => 'required',
+            'customer_type_id' => 'required',
             'is_active' => 'required',
             'adr' => 'required',
             'prov' => 'required',
-            'owner' => 'required',
-            'hp' => 'required',
-            'updated_by' => 'required',
+            'pic' => 'required',
+            'pic_hp' => 'required',
+            'updated_by' => 'required'
         ]);
 
-        $input = Entity::create($data);
+        $input = Customer::create($data);
 
         return response()->json([
-            'success' => true,
-            'message' => 'Created Entity Success',
+            'message' => 'Create Customer Success',
             'data' => $input
         ]);
     }
@@ -54,7 +53,7 @@ class EntityController extends Controller
      */
     public function show(string $id)
     {
-        return new EntityResource(Entity::findOrFail($id));
+        return new CustomerResource(Customer::FindOrFail($id));
     }
 
     /**
@@ -66,19 +65,19 @@ class EntityController extends Controller
             'alias' => 'required',
             'name' => 'required',
             'desc' => 'required',
+            'customer_type_id' => 'required',
             'is_active' => 'required',
             'adr' => 'required',
             'prov' => 'required',
-            'owner' => 'required',
-            'hp' => 'required',
-            'updated_by' => 'required',
+            'pic' => 'required',
+            'pic_hp' => 'required',
+            'updated_by' => 'required'
         ]);
 
-        $input = Entity::where('id', $id)->update($data);
+        $input = Customer::where('id', $id)->update($data);
 
         return response()->json([
-            'success' => true,
-            'message' => 'Updated Entity Success'
+            'message' => 'Update Customer Success'
         ]);
     }
 
@@ -87,11 +86,11 @@ class EntityController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = Entity::FindOrFail($id);
+        $data = Customer::FindOrFail($id);
         $data->delete();
 
         return response()->json([
-            'message' => 'Delete Type Success'
+            'message' => 'Delete Customer Success'
         ]);
     }
 }

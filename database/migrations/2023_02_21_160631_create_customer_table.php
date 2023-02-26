@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('alias');
             $table->string('name');
             $table->string('desc');
-            $table->foreignId('customer_type_id')->constrained('customer_type'); //foreign key to table customer type
+            $table->foreignId('customer_type_id')->constrained('customer_type')->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('is_active')->default(false);
             $table->string('adr');
             $table->string('prov');

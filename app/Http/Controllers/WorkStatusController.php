@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ServiceBaseResource;
-use App\Models\ServiceBase;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Resources\WorkStatusResource;
+use App\Models\WorkStatus;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
-class ServiceBaseController extends Controller
+class WorkStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class ServiceBaseController extends Controller
     public function index()
     {
         return response()->json([
-            'message' => 'Data Service Base',
-            'data' => ServiceBaseResource::collection(ServiceBase::all())
+            'message' => 'Data Work Status',
+            'data' => WorkStatusResource::collection(WorkStatus::all())
         ]);
     }
 
@@ -29,14 +27,14 @@ class ServiceBaseController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'city' => 'required',
+            'desc' => 'required',
             'updated_by' => 'required'
         ]);
 
-        $input = ServiceBase::create($data);
+        $input = WorkStatus::create($data);
 
         return response()->json([
-            'message' => 'Create Service Base Success',
+            'message' => 'Created Work Status Success',
             'data' => $input
         ]);
     }
@@ -46,7 +44,7 @@ class ServiceBaseController extends Controller
      */
     public function show(string $id)
     {
-        return new ServiceBaseResource(ServiceBase::findOrFail($id));
+        return new WorkStatusResource(WorkStatus::findOrFail($id));
     }
 
     /**
@@ -56,14 +54,14 @@ class ServiceBaseController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'city' => 'required',
+            'desc' => 'required',
             'updated_by' => 'required'
         ]);
 
-        $input = ServiceBase::where('id', $id)->update($data);
+        $input = WorkStatus::where('id', $id)->update($data);
 
         return response()->json([
-            'message' => 'Update Service Base Success'
+            'message' => 'Updated Work Status Success'
         ]);
     }
 
@@ -72,11 +70,11 @@ class ServiceBaseController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = ServiceBase::FindOrFail($id);
+        $data = WorkStatus::FindOrFail($id);
         $data->delete();
 
         return response()->json([
-            'message' => 'Delete Service Base Success'
+            'message' => 'Delete Work Status Success'
         ]);
     }
 }

@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ServiceBaseResource;
-use App\Models\ServiceBase;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Resources\RegionResource;
+use App\Models\Region;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
-class ServiceBaseController extends Controller
+class RegionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class ServiceBaseController extends Controller
     public function index()
     {
         return response()->json([
-            'message' => 'Data Service Base',
-            'data' => ServiceBaseResource::collection(ServiceBase::all())
+            'message' => "Data Region",
+            'data' => RegionResource::collection(Region::all())
         ]);
     }
 
@@ -28,16 +26,17 @@ class ServiceBaseController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'city' => 'required',
-            'updated_by' => 'required'
+            'alias'=> 'required',
+            'name'=> 'required',
+            'is_active'=> 'required',
+            'updated_by'=> 'required',
         ]);
 
-        $input = ServiceBase::create($data);
+        $input = Region::create($data);
 
         return response()->json([
-            'message' => 'Create Service Base Success',
-            'data' => $input
+            'message' => "Create Region Success",
+            'date' => $input
         ]);
     }
 
@@ -46,7 +45,7 @@ class ServiceBaseController extends Controller
      */
     public function show(string $id)
     {
-        return new ServiceBaseResource(ServiceBase::findOrFail($id));
+        return new RegionResource(Region::findOrFail($id));
     }
 
     /**
@@ -55,15 +54,16 @@ class ServiceBaseController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'city' => 'required',
-            'updated_by' => 'required'
+            'alias'=> 'required',
+            'name'=> 'required',
+            'is_active'=> 'required',
+            'updated_by'=> 'required',
         ]);
 
-        $input = ServiceBase::where('id', $id)->update($data);
+        Region::where('id', $id)->update($data);
 
         return response()->json([
-            'message' => 'Update Service Base Success'
+            'message' => "Update Region Success"
         ]);
     }
 
@@ -72,11 +72,11 @@ class ServiceBaseController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = ServiceBase::FindOrFail($id);
+        $data = Region::FindOrFail($id);
         $data->delete();
 
         return response()->json([
-            'message' => 'Delete Service Base Success'
+            'message' => 'Delete Region Success'
         ]);
     }
 }
