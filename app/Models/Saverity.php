@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Entity extends Model
+class Saverity extends Model
 {
     use HasFactory;
-    protected $table = 'entity';
+    protected $table = 'saverity';
     protected $fillable = [
-        'alias', 
         'name', 
         'desc', 
         'is_active', 
-        'adr', 
-        'prov', 
-        'owner', 
-        'hp', 
         'updated_by'
     ];
 }

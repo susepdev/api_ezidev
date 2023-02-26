@@ -17,6 +17,7 @@ class EntityController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Entity',
             'data' => EntityResource::collection(Entity::all())
         ]);
@@ -42,6 +43,7 @@ class EntityController extends Controller
         $input = Entity::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Created Entity Success',
             'data' => $input
         ]);
@@ -75,6 +77,7 @@ class EntityController extends Controller
         $input = Entity::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Updated Entity Success'
         ]);
     }
@@ -85,7 +88,9 @@ class EntityController extends Controller
     public function destroy(string $id)
     {
         Entity::where('id', $id)->delete();
-
-        return response("Entity Deleted");
+        return response()->json([
+            'success' => true,
+            'message' => 'Entity Deleted'
+        ]);
     }
 }

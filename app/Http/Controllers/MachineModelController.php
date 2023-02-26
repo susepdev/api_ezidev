@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\RoleResource;
-use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class RoleController extends Controller
+use App\Http\Resources\MachineModelResource;
+use App\Models\MachineModel;
+
+class MachineModelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = RoleResource::collection(Role::all());
+        $data = MachineModelResource::collection(MachineModel::all());
         
         return response()->json([
             'success' => true,
-            'message' => 'Data Role',
+            'message' => 'Data Machine Model',
             'data' => $data
         ]);
     }
@@ -33,14 +33,15 @@ class RoleController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'desc' => 'required',
-            'updated_by' => 'required'
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        $input = Role::create($data);
+        $input = MachineModel::create($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Created Role Success',
+            'message' => 'Created Machine Model Success',
             'data' => $input
         ]);
     }
@@ -50,13 +51,7 @@ class RoleController extends Controller
      */
     public function show(string $id)
     {
-        $data = new RoleResource(Role::findOrFail($id));
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Show Role',
-            'data' => $data
-        ]);
+        return new MachineModelResource(MachineModel::findOrFail($id));
     }
 
     /**
@@ -67,14 +62,15 @@ class RoleController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'desc' => 'required',
-            'updated_by' => 'required'
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        $input = Role::where('id', $id)->update($data);
+        $input = MachineModel::where('id', $id)->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Role Success'
+            'message' => 'Updated Machine Model Success'
         ]);
     }
 
@@ -83,11 +79,10 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        Role::where('id', $id)->delete();
-
+        MachineModel::where('id', $id)->delete();
         return response()->json([
             'success' => true,
-            'message' => 'Delete Role Success'
+            'message' => 'Machine Model Deleted'
         ]);
     }
 }

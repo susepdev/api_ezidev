@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('alias');
             $table->string('name');
             $table->string('desc');
-            $table->bigInteger('customer_type_id');
-            $table->enum('is_active', [true, false]);
+            $table->foreignId('customer_type_id')->constrained('customer_type'); //foreign key to table customer type
+            $table->boolean('is_active')->default(false);
             $table->string('adr');
             $table->string('prov');
             $table->string('pic');
             $table->string('pic_hp');
-            $table->timestamp('last_updated');
             $table->string('updated_by');
+            $table->timestamps();
         });
     }
 

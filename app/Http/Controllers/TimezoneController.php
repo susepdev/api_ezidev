@@ -18,6 +18,7 @@ class TimezoneController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => "Data Timezone",
             'data' => TimezoneResource::collection(Timezone::all())
         ]);

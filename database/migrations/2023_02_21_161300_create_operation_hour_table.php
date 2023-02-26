@@ -18,9 +18,9 @@ return new class extends Migration
             $table->time('open_hour');
             $table->time('close_hour');
             $table->integer('days');
-            $table->enum('is_active', [true, false]);
-            $table->timestamp('last_updated');
+            $table->boolean('is_active')->default(false);
             $table->string('updated_by');
+            $table->timestamps();
         });
     }
 

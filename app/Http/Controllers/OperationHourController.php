@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\RoleResource;
-use App\Models\Role;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class RoleController extends Controller
+use App\Http\Resources\OperationHourResource;
+use App\Models\OperationHour;
+
+class OperationHourController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = RoleResource::collection(Role::all());
+        $data = OperationHourResource::collection(OperationHour::all());
         
         return response()->json([
             'success' => true,
-            'message' => 'Data Role',
+            'message' => 'Data Operation Hour',
             'data' => $data
         ]);
     }
@@ -33,14 +32,18 @@ class RoleController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'desc' => 'required',
-            'updated_by' => 'required'
+            'open_hour' => 'required',
+            'close_hour' => 'required',
+            'days' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        $input = Role::create($data);
+        $input = OperationHour::create($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Created Role Success',
+            'message' => 'Created Operation Hour Success',
             'data' => $input
         ]);
     }
@@ -50,13 +53,7 @@ class RoleController extends Controller
      */
     public function show(string $id)
     {
-        $data = new RoleResource(Role::findOrFail($id));
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Show Role',
-            'data' => $data
-        ]);
+        return new OperationHourResource(OperationHour::findOrFail($id));
     }
 
     /**
@@ -67,14 +64,18 @@ class RoleController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'desc' => 'required',
-            'updated_by' => 'required'
+            'open_hour' => 'required',
+            'close_hour' => 'required',
+            'days' => 'required',
+            'is_active' => 'required',
+            'updated_by' => 'required',
         ]);
 
-        $input = Role::where('id', $id)->update($data);
+        $input = OperationHour::where('id', $id)->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Role Success'
+            'message' => 'Updated Operation Hour Success'
         ]);
     }
 
@@ -83,11 +84,10 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        Role::where('id', $id)->delete();
-
+        OperationHour::where('id', $id)->delete();
         return response()->json([
             'success' => true,
-            'message' => 'Delete Role Success'
+            'message' => 'Operation Hour Deleted'
         ]);
     }
 }

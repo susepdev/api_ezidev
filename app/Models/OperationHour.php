@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Entity extends Model
+class OperationHour extends Model
 {
     use HasFactory;
-    protected $table = 'entity';
+    protected $table = 'operation_hour';
     protected $fillable = [
-        'alias', 
         'name', 
         'desc', 
+        'open_hour', 
+        'close_hour', 
+        'days', 
         'is_active', 
-        'adr', 
-        'prov', 
-        'owner', 
-        'hp', 
         'updated_by'
     ];
 }
