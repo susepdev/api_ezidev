@@ -15,6 +15,7 @@ class SlaResponseController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data SLA Response',
             'date' => SlaResponseResource::collection(SlaResponse::all())
         ]);
@@ -35,6 +36,7 @@ class SlaResponseController extends Controller
         $input = SlaResponse::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create SLA Response Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class SlaResponseController extends Controller
         $input = SlaResponse::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update SLA Response Success'
         ]);
     }
@@ -76,6 +79,7 @@ class SlaResponseController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete SLA Response Success'
         ]);
     }

@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\EntityResource;
-use App\Models\Entity;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Resources\MachineResource;
+use App\Models\Machine;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
-class EntityController extends Controller
+class MachineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,8 @@ class EntityController extends Controller
     {
         return response()->json([
             'success' => true,
-            'message' => 'Data Entity',
-            'data' => EntityResource::collection(Entity::all())
+            'message' => 'Data Machine',
+            'data' => MachineResource::collection(Machine::all())
         ]);
     }
 
@@ -29,22 +27,23 @@ class EntityController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'alias' => 'required',
-            'name' => 'required',
-            'desc' => 'required',
+            'ws_id' => 'required',
+            'location_name' => 'required',
+            'location_adr' => 'required',
+            'customer_id' => 'required',
+            'contract_id' => 'required',
+            'pm_period_id' => 'required',
+            'operation_hour_id' => 'required',
+            'service_base_id' => 'required',
             'is_active' => 'required',
-            'adr' => 'required',
-            'prov' => 'required',
-            'owner' => 'required',
-            'hp' => 'required',
-            'updated_by' => 'required',
+            'updated_by' => 'required'
         ]);
 
-        $input = Entity::create($data);
+        $input = Machine::create($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Created Entity Success',
+            'message' => 'Created Machine Success',
             'data' => $input
         ]);
     }
@@ -54,7 +53,7 @@ class EntityController extends Controller
      */
     public function show(string $id)
     {
-        return new EntityResource(Entity::findOrFail($id));
+        return new MachineResource(Machine::findOrFail($id));
     }
 
     /**
@@ -63,22 +62,23 @@ class EntityController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'alias' => 'required',
-            'name' => 'required',
-            'desc' => 'required',
+            'ws_id' => 'required',
+            'location_name' => 'required',
+            'location_adr' => 'required',
+            'customer_id' => 'required',
+            'contract_id' => 'required',
+            'pm_period_id' => 'required',
+            'operation_hour_id' => 'required',
+            'service_base_id' => 'required',
             'is_active' => 'required',
-            'adr' => 'required',
-            'prov' => 'required',
-            'owner' => 'required',
-            'hp' => 'required',
-            'updated_by' => 'required',
+            'updated_by' => 'required'
         ]);
 
-        $input = Entity::where('id', $id)->update($data);
+        $input = Machine::where('id', $id)->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Entity Success'
+            'message' => 'Updated Machine Success'
         ]);
     }
 
@@ -87,7 +87,7 @@ class EntityController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = Entity::FindOrFail($id);
+        $data = Machine::FindOrFail($id);
         $data->delete();
 
         return response()->json([

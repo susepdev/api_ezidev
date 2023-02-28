@@ -15,6 +15,7 @@ class ServiceTypeController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Service Type',
             'date' => ServiceTypeResource::collection(ServiceType::all())
         ]);
@@ -35,6 +36,7 @@ class ServiceTypeController extends Controller
         $input = ServiceType::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Service Type Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class ServiceTypeController extends Controller
         $input = ServiceType::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Service Type Success'
         ]);
     }
@@ -76,6 +79,7 @@ class ServiceTypeController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Service Type Success'
         ]);
     }

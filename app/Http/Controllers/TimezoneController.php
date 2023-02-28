@@ -37,6 +37,7 @@ class TimezoneController extends Controller
         $input = Timezone::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => "Create Time Zone Success",
             'date' => $input
         ]);
@@ -63,6 +64,7 @@ class TimezoneController extends Controller
         Timezone::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => "Update Time Zone Success"
         ]);
     }
@@ -76,6 +78,7 @@ class TimezoneController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Time Zone Success'
         ]);
     }

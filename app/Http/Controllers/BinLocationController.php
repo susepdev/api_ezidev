@@ -14,9 +14,11 @@ class BinLocationController extends Controller
      */
     public function index()
     {
+        $data = BinLocationResource::collection(BinLocation::all());
         return response()->json([
+            'success' => true,
             'message' => 'Data Bin Location',
-            'date' => BinLocationResource::collection(BinLocation::all())
+            'date' => $data
         ]);
     }
 
@@ -35,6 +37,7 @@ class BinLocationController extends Controller
         $input = BinLocation::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Bin Location Success',
             'data' => $input
         ]);
@@ -63,6 +66,7 @@ class BinLocationController extends Controller
         $input = BinLocation::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Bin Location Success'
         ]);
     }
@@ -76,6 +80,7 @@ class BinLocationController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Bin Location Success'
         ]);
     }

@@ -15,6 +15,7 @@ class DataSlaController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Data SLA',
             'date' => DataSlaResource::collection(DataSla::all())
         ]);
@@ -35,6 +36,7 @@ class DataSlaController extends Controller
         $input = DataSla::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Data SLA Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class DataSlaController extends Controller
         $input = DataSla::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Data SLA Success'
         ]);
     }
@@ -76,6 +79,7 @@ class DataSlaController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Data SLA Success'
         ]);
     }

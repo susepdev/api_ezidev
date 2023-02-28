@@ -15,6 +15,7 @@ class ContractController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Contract',
             'data' => ContractResource::collection(Contract::all())
         ]);
@@ -42,6 +43,7 @@ class ContractController extends Controller
         $input = Contract::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Contract Success',
             'data' => $input
         ]);
@@ -77,6 +79,7 @@ class ContractController extends Controller
         $input = Contract::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Contract Success'
         ]);
     }
@@ -90,6 +93,7 @@ class ContractController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Contract Success'
         ]);
     }

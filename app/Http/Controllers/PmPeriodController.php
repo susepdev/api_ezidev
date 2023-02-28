@@ -17,6 +17,7 @@ class PmPeriodController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data PM Period',
             'date' => PmPeriodResource::collection(PmPeriod::all())
         ]);
@@ -37,6 +38,7 @@ class PmPeriodController extends Controller
         $input = PmPeriod::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create PM Period Success',
             'data' => $input
         ]);
@@ -65,6 +67,7 @@ class PmPeriodController extends Controller
         $input = PmPeriod::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update PM Period Success'
         ]);
     }
@@ -78,6 +81,7 @@ class PmPeriodController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete PM Period Success'
         ]);
     }

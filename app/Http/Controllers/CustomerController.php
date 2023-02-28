@@ -17,6 +17,7 @@ class CustomerController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Customer',
             'data' => CustomerResource::collection(Customer::all())
         ]);
@@ -43,6 +44,7 @@ class CustomerController extends Controller
         $input = Customer::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Customer Success',
             'data' => $input
         ]);
@@ -77,6 +79,7 @@ class CustomerController extends Controller
         $input = Customer::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Customer Success'
         ]);
     }
@@ -90,6 +93,7 @@ class CustomerController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Customer Success'
         ]);
     }

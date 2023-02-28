@@ -15,6 +15,7 @@ class SlaResolutionController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data SLA Resolution',
             'date' => SlaResolutionResource::collection(SlaResolution::all())
         ]);
@@ -35,6 +36,7 @@ class SlaResolutionController extends Controller
         $input = SlaResolution::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create SLA Resolution Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class SlaResolutionController extends Controller
         $input = SlaResolution::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update SLA Resolution Success'
         ]);
     }
@@ -76,6 +79,7 @@ class SlaResolutionController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete SLA Resolution Success'
         ]);
     }

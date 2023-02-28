@@ -17,6 +17,7 @@ class ProblemTypeController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Problem Type',
             'date' => ProblemTypeResource::collection(ProblemType::all())
         ]);
@@ -37,6 +38,7 @@ class ProblemTypeController extends Controller
         $input = ProblemType::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Problem Type Success',
             'data' => $input
         ]);
@@ -65,6 +67,7 @@ class ProblemTypeController extends Controller
         $input = ProblemType::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Problem Type Success'
         ]);
     }
@@ -78,6 +81,7 @@ class ProblemTypeController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Problem Type Success'
         ]);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CustomerTypeResource;
 use App\Models\CustomerType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class CustomerTypeController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Customer Type',
             'data' => CustomerTypeResource::collection(CustomerType::all())
         ]);
@@ -36,6 +38,7 @@ class CustomerTypeController extends Controller
         $input = CustomerType::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Customer Type Success',
             'data' => $input
         ]);
@@ -65,6 +68,7 @@ class CustomerTypeController extends Controller
         $input = CustomerType::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Customer Type Success'
         ]);
     }
@@ -78,6 +82,7 @@ class CustomerTypeController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Customer Type Success'
         ]);
     }

@@ -15,6 +15,7 @@ class PmCodeController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data PM Code',
             'date' => PmCodeResource::collection(PmCode::all())
         ]);
@@ -35,6 +36,7 @@ class PmCodeController extends Controller
         $input = PmCode::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create PM Code Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class PmCodeController extends Controller
         $input = PmCode::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update PM Code Success'
         ]);
     }
@@ -76,6 +79,7 @@ class PmCodeController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete PM Code Success'
         ]);
     }

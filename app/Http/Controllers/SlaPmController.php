@@ -15,6 +15,7 @@ class SlaPmController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data SLA PM',
             'date' => SlaPmResource::collection(SlaPm::all())
         ]);
@@ -35,6 +36,7 @@ class SlaPmController extends Controller
         $input = SlaPm::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create SLA PM Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class SlaPmController extends Controller
         $input = SlaPm::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update SLA PM Success'
         ]);
     }
@@ -76,6 +79,7 @@ class SlaPmController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete SLA PM Success'
         ]);
     }

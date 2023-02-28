@@ -15,6 +15,7 @@ class MachineVendorController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Machine Vendor',
             'date' => MachineVendorResource::collection(MachineVendor::all())
         ]);
@@ -35,6 +36,7 @@ class MachineVendorController extends Controller
         $input = MachineVendor::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Machine Vendor Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class MachineVendorController extends Controller
         $input = MachineVendor::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Machine Vendor Success'
         ]);
     }
@@ -76,6 +79,7 @@ class MachineVendorController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Machine Vendor Success'
         ]);
     }

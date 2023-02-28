@@ -17,6 +17,7 @@ class ServiceBaseController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Service Base',
             'data' => ServiceBaseResource::collection(ServiceBase::all())
         ]);
@@ -36,6 +37,7 @@ class ServiceBaseController extends Controller
         $input = ServiceBase::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Create Service Base Success',
             'data' => $input
         ]);
@@ -63,6 +65,7 @@ class ServiceBaseController extends Controller
         $input = ServiceBase::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Update Service Base Success'
         ]);
     }
@@ -76,6 +79,7 @@ class ServiceBaseController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Service Base Success'
         ]);
     }

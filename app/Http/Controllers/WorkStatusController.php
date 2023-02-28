@@ -15,6 +15,7 @@ class WorkStatusController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => 'Data Work Status',
             'data' => WorkStatusResource::collection(WorkStatus::all())
         ]);
@@ -34,6 +35,7 @@ class WorkStatusController extends Controller
         $input = WorkStatus::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Created Work Status Success',
             'data' => $input
         ]);
@@ -61,6 +63,7 @@ class WorkStatusController extends Controller
         $input = WorkStatus::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => 'Updated Work Status Success'
         ]);
     }
@@ -74,6 +77,7 @@ class WorkStatusController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Work Status Success'
         ]);
     }

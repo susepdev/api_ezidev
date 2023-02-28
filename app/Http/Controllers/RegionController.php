@@ -15,6 +15,7 @@ class RegionController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
             'message' => "Data Region",
             'data' => RegionResource::collection(Region::all())
         ]);
@@ -35,6 +36,7 @@ class RegionController extends Controller
         $input = Region::create($data);
 
         return response()->json([
+            'success' => true,
             'message' => "Create Region Success",
             'date' => $input
         ]);
@@ -63,6 +65,7 @@ class RegionController extends Controller
         Region::where('id', $id)->update($data);
 
         return response()->json([
+            'success' => true,
             'message' => "Update Region Success"
         ]);
     }
@@ -76,6 +79,7 @@ class RegionController extends Controller
         $data->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Delete Region Success'
         ]);
     }
