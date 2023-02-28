@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,11 @@ use App\Http\Controllers\OperationHourController;
 use App\Http\Controllers\MachineModelController;
 use App\Http\Controllers\PicVendorController;
 use App\Http\Controllers\WorkStatusController;
+
+// auth
+Route::post('auth/register', RegisterController::class);
+Route::post('auth/login', LoginController::class);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -13,9 +13,18 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id')->unique();
+            $table->string('alias')->nullable();
             $table->string('name');
+            $table->string('role')->nullable();
+            $table->boolean('is_active')->default(false)->nullable();
+            $table->string('adr')->nullable();
+            $table->string('city')->nullable();
+            $table->string('prov')->nullable();
+            $table->foreignId('service_base_id')->constrained('service_base')->nullable();
+            $table->foreignId('time_zone_id')->constrained('time_zone')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
