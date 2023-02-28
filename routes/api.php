@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\auth\EditUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\UpdateUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,11 +33,13 @@ use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\OperationHourController;
 use App\Http\Controllers\MachineModelController;
 use App\Http\Controllers\PicVendorController;
+use App\Http\Controllers\RepairedPartStatusController;
 use App\Http\Controllers\WorkStatusController;
 
 // auth
 Route::post('auth/register', RegisterController::class);
 Route::post('auth/login', LoginController::class);
+Route::apiResource('userupdate', EditUserController::class);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -67,3 +71,4 @@ Route::apiResource('pm_code', PmCodeController::class);
 Route::apiResource('bin_location', BinLocationController::class);
 Route::apiResource('machine', MachineController::class);
 Route::apiResource('pic_vendor', PicVendorController::class);
+Route::apiResource('repaired_part_status', RepairedPartStatusController::class);
