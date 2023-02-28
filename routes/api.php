@@ -13,6 +13,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerTypeController;
 use App\Http\Controllers\DataSlaController;
+use App\Http\Controllers\DeliveryCourierController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\ErrorCodeController;
 use App\Http\Controllers\MachineController;
@@ -37,6 +38,7 @@ use App\Http\Controllers\PartController;
 use App\Http\Controllers\PartStatusController;
 use App\Http\Controllers\PicVendorController;
 use App\Http\Controllers\RepairedPartStatusController;
+use App\Http\Controllers\RepairProgressStatusController;
 use App\Http\Controllers\WorkStatusController;
 
 // auth
@@ -78,3 +80,5 @@ Route::apiResource('repaired_part_status', RepairedPartStatusController::class);
 Route::apiResource('part', PartController::class);
 Route::apiResource('part_status', PartStatusController::class);
 Route::apiResource('error_code', ErrorCodeController::class);
+Route::apiResource('repair_progress_status', RepairProgressStatusController::class);
+Route::apiResource('delivery_courier', DeliveryCourierController::class);
