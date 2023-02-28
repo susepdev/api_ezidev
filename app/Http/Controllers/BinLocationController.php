@@ -81,7 +81,7 @@ class BinLocationController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Delete Bin Location Success'
+            'message' => 'Bin Location Deleted'
         ]);
     }
 }
