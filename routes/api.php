@@ -28,6 +28,7 @@ use App\Http\Controllers\SaverityController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\OperationHourController;
 use App\Http\Controllers\MachineModelController;
+use App\Http\Controllers\PicVendorController;
 use App\Http\Controllers\WorkStatusController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -58,3 +59,4 @@ Route::apiResource('contract', ContractController::class);
 Route::apiResource('pm_code', PmCodeController::class);
 Route::apiResource('bin_location', BinLocationController::class);
 Route::apiResource('machine', MachineController::class);
+Route::apiResource('pic_vendor', PicVendorController::class);
