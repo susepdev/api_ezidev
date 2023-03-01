@@ -34,6 +34,7 @@ use App\Http\Controllers\SaverityController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\OperationHourController;
 use App\Http\Controllers\MachineModelController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\PartController;
 use App\Http\Controllers\PartStatusController;
 use App\Http\Controllers\PartTypeController;
@@ -86,3 +87,4 @@ Route::apiResource('repair_progress_status', RepairProgressStatusController::cla
 Route::apiResource('delivery_courier', DeliveryCourierController::class);
 Route::apiResource('supplier', SupplierController::class);
 Route::apiResource('part_type', PartTypeController::class);
+Route::apiResource('manager', ManagerController::class);

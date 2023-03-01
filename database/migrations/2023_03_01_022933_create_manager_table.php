@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('manager', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users'); //foreign key to table users
-            $table->integer('mgr_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('mgr_id');
             $table->string('alias');
             $table->string('name');
             $table->boolean('is_active')->default(false);
-            $table->foreignId('timezone_id')->constrained('time_zone'); //foreign key to table time_zone
+            $table->foreignId('time_zone_id')->constrained('time_zone');
             $table->string('updated_by');
             $table->timestamps();
         });
