@@ -42,6 +42,7 @@ use App\Http\Controllers\PicVendorController;
 use App\Http\Controllers\RepairedPartStatusController;
 use App\Http\Controllers\RepairProgressStatusController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\TeamLeaderController;
 use App\Http\Controllers\WorkStatusController;
 
 // auth
@@ -88,3 +89,4 @@ Route::apiResource('delivery_courier', DeliveryCourierController::class);
 Route::apiResource('supplier', SupplierController::class);
 Route::apiResource('part_type', PartTypeController::class);
 Route::apiResource('manager', ManagerController::class);
+Route::apiResource('team_leader', TeamLeaderController::class);
