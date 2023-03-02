@@ -65,11 +65,13 @@ class ErrorCodeController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = ErrorCode::where('id', $id)->update($data);
+        $input = ErrorCode::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Error Code Success'
+            'message' => 'Update Error Code Success',
+            'data' => new ErrorCodeResource($input)
         ]);
     }
 

@@ -62,11 +62,13 @@ class SupplierController extends Controller
             'updated_by'=> 'required',
         ]);
 
-        Supplier::where('id', $id)->update($data);
+        $input = Supplier::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => "Update Supplier Success"
+            'message' => 'Update Supplier Success',
+            'data' => new SupplierResource($input)
         ]);
     }
 

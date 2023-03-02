@@ -72,11 +72,13 @@ class PartController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = Part::where('id', $id)->update($data);
+        $input = Part::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Part Success'
+            'message' => 'Update Part Success',
+            'data' => new PartResource($input)
         ]);
     }
 

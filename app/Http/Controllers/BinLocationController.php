@@ -63,11 +63,13 @@ class BinLocationController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = BinLocation::where('id', $id)->update($data);
+        $input = BinLocation::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Bin Location Success'
+            'message' => 'Update Bin Location Success',
+            'data' => new BinLocationResource($input)
         ]);
     }
 

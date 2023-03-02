@@ -25,7 +25,7 @@ class UserResource extends JsonResource
             'city' => $this->city,
             'prov' => $this->prov,
             'service_base_id' => $this->service_base_id,
-            'time_zone_id' => $this->time_zone_id,
+            'time_zone_id' => $this->time_zone->name,
             'email' => $this->email,
             'last_updated' => $this->updated_at,
             'updated_by' => $this->updated_by

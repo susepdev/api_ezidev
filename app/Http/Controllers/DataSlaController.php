@@ -62,11 +62,13 @@ class DataSlaController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = DataSla::where('id', $id)->update($data);
+        $input = DataSla::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Data SLA Success'
+            'message' => 'Update Data Sla Success',
+            'data' => new DataSlaResource($input)
         ]);
     }
 

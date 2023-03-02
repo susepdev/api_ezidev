@@ -62,11 +62,13 @@ class RegionController extends Controller
             'updated_by'=> 'required',
         ]);
 
-        Region::where('id', $id)->update($data);
+        $input = Region::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => "Update Region Success"
+            'message' => 'Update Region Success',
+            'data' => new RegionResource($input)
         ]);
     }
 

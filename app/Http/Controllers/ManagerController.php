@@ -29,10 +29,7 @@ class ManagerController extends Controller
         $data = $request->validate([
             'user_id' => 'required',
             'mgr_id' => 'required',
-            'alias' => 'required',
-            'name' => 'required',
             'is_active' => 'required',
-            'time_zone_id' => 'required',
             'updated_by' => 'required'
         ]);
 
@@ -61,18 +58,17 @@ class ManagerController extends Controller
         $data = $request->validate([
             'user_id' => 'required',
             'mgr_id' => 'required',
-            'alias' => 'required',
-            'name' => 'required',
             'is_active' => 'required',
-            'time_zone_id' => 'required',
             'updated_by' => 'required'
         ]);
 
-        $input = Manager::where('id', $id)->update($data);
+        $input = Manager::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Manager Success'
+            'message' => 'Update Manager Success',
+            'data' => new ManagerResource($input)
         ]);
     }
 

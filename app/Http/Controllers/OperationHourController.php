@@ -71,11 +71,13 @@ class OperationHourController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = OperationHour::where('id', $id)->update($data);
+        $input = OperationHour::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Operation Hour Success'
+            'message' => 'Update Operation Hour Success',
+            'data' => new OperationHourResource($input)
         ]);
     }
 

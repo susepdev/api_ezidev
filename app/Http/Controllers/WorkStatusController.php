@@ -60,11 +60,13 @@ class WorkStatusController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = WorkStatus::where('id', $id)->update($data);
+        $input = WorkStatus::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Work Status Success'
+            'message' => 'Update Work Status Success',
+            'data' => new WorkStatusResource($input)
         ]);
     }
 

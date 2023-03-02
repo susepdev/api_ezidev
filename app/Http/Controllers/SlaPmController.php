@@ -62,11 +62,13 @@ class SlaPmController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = SlaPm::where('id', $id)->update($data);
+        $input = SlaPm::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update SLA PM Success'
+            'message' => 'Update SLA PM Success',
+            'data' => new SlaPmResource($input)
         ]);
     }
 

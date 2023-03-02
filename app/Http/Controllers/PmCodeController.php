@@ -62,11 +62,13 @@ class PmCodeController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = PmCode::where('id', $id)->update($data);
+        $input = PmCode::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update PM Code Success'
+            'message' => 'Update PM Code Success',
+            'data' => new PmCodeResource($input)
         ]);
     }
 

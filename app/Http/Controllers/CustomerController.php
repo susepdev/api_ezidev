@@ -76,11 +76,13 @@ class CustomerController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = Customer::where('id', $id)->update($data);
+        $input = Customer::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Customer Success'
+            'message' => 'Update Customer Success',
+            'data' => new CustomerResource($input)
         ]);
     }
 

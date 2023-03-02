@@ -66,11 +66,13 @@ class RepairProgressStatusController extends Controller
             'updated_by' => 'required',
         ]);
 
-        RepairProgressStatus::where('id', $id)->update($data);
+        $input = RepairProgressStatus::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => "Update Repair Progress Status Success"
+            'message' => 'Update Repair Progress Status Success',
+            'data' => new RepairProgressStatusResource($input)
         ]);
     }
 

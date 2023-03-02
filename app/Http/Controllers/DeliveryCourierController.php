@@ -63,11 +63,13 @@ class DeliveryCourierController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = DeliveryCourier::where('id', $id)->update($data);
+        $input = DeliveryCourier::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Delivery Courier Success'
+            'message' => 'Update Delivery Courier Success',
+            'data' => new DeliveryCourierResource($input)
         ]);
     }
 

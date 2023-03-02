@@ -76,11 +76,13 @@ class ContractController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = Contract::where('id', $id)->update($data);
+        $input = Contract::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Contract Success'
+            'message' => 'Update Contract Success',
+            'data' => new ContractResource($input)
         ]);
     }
 

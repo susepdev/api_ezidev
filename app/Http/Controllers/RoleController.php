@@ -70,11 +70,13 @@ class RoleController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = Role::where('id', $id)->update($data);
+        $input = Role::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Role Success'
+            'message' => 'Update Role Success',
+            'data' => new RoleResource($input)
         ]);
     }
 

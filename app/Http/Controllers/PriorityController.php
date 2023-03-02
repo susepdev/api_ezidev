@@ -66,11 +66,13 @@ class PriorityController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = Priority::where('id', $id)->update($data);
+        $input = Priority::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Priority Success'
+            'message' => 'Update Priority Success',
+            'data' => new PriorityResource($input)
         ]);
     }
 

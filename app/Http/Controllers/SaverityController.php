@@ -66,11 +66,13 @@ class SaverityController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = Saverity::where('id', $id)->update($data);
+        $input = Saverity::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Saverity Success'
+            'message' => 'Update Saverity Success',
+            'data' => new SaverityResource($input)
         ]);
     }
 

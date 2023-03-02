@@ -62,11 +62,13 @@ class ServiceTypeController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = ServiceType::where('id', $id)->update($data);
+        $input = ServiceType::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Service Type Success'
+            'message' => 'Update Service Type Success',
+            'data' => new ServiceTypeResource($input)
         ]);
     }
 

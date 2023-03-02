@@ -74,11 +74,13 @@ class MachineController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = Machine::where('id', $id)->update($data);
+        $input = Machine::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Machine Success'
+            'message' => 'Update Machine Success',
+            'data' => new MachineResource($input)
         ]);
     }
 

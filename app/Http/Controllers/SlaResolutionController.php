@@ -62,11 +62,13 @@ class SlaResolutionController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = SlaResolution::where('id', $id)->update($data);
+        $input = SlaResolution::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update SLA Resolution Success'
+            'message' => 'Update SLA Resolution Success',
+            'data' => new SlaResolutionResource($input)
         ]);
     }
 

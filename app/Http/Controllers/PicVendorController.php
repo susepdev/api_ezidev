@@ -64,11 +64,13 @@ class PicVendorController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = PicVendor::where('id', $id)->update($data);
+        $input = PicVendor::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update PIC Vendor Success'
+            'message' => 'Update PIC Vendor Success',
+            'data' => new PicVendorResource($input)
         ]);
     }
 

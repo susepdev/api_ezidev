@@ -62,11 +62,13 @@ class ServiceBaseController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = ServiceBase::where('id', $id)->update($data);
+        $input = ServiceBase::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Service Base Success'
+            'message' => 'Update ServiceBase Success',
+            'data' => new ServiceBaseResource($input)
         ]);
     }
 

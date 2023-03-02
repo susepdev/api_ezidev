@@ -74,11 +74,13 @@ class EntityController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = Entity::where('id', $id)->update($data);
+        $input = Entity::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Updated Entity Success'
+            'message' => 'Update Entity Success',
+            'data' => new EntityResource($input)
         ]);
     }
 

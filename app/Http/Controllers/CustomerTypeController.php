@@ -65,11 +65,13 @@ class CustomerTypeController extends Controller
             'updated_by' => 'required'
         ]);
 
-        $input = CustomerType::where('id', $id)->update($data);
+        $input = CustomerType::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Customer Type Success'
+            'message' => 'Update Customer Type Success',
+            'data' => new CustomerTypeResource($input)
         ]);
     }
 

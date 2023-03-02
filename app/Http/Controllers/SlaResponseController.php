@@ -62,11 +62,13 @@ class SlaResponseController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = SlaResponse::where('id', $id)->update($data);
+        $input = SlaResponse::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update SLA Response Success'
+            'message' => 'Update SLA Response Success',
+            'data' => new SlaResponseResource($input)
         ]);
     }
 

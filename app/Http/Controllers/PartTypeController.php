@@ -64,11 +64,13 @@ class PartTypeController extends Controller
             'updated_by'=> 'required',
         ]);
 
-        PartType::where('id', $id)->update($data);
+        $input = PartType::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => "Update Part Type Success"
+            'message' => 'Update Part Type Success',
+            'data' => new PartTypeResource($input)
         ]);
     }
 

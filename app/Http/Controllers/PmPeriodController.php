@@ -64,11 +64,13 @@ class PmPeriodController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = PmPeriod::where('id', $id)->update($data);
+        $input = PmPeriod::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update PM Period Success'
+            'message' => 'Update PM Period Success',
+            'data' => new PmPeriodResource($input)
         ]);
     }
 

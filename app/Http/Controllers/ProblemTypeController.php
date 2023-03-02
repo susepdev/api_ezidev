@@ -64,11 +64,13 @@ class ProblemTypeController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = ProblemType::where('id', $id)->update($data);
+        $input = ProblemType::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Problem Type Success'
+            'message' => 'Update Problem Type Success',
+            'data' => new ProblemTypeResource($input)
         ]);
     }
 

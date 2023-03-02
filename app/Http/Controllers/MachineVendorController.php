@@ -62,11 +62,13 @@ class MachineVendorController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = MachineVendor::where('id', $id)->update($data);
+        $input = MachineVendor::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Machine Vendor Success'
+            'message' => 'Update Machine Vendor Success',
+            'data' => new MachineVendorResource($input)
         ]);
     }
 

@@ -12,10 +12,7 @@ class Manager extends Model
     protected $fillable = [
         'user_id',
         'mgr_id',
-        'alias',
-        'name',
         'is_active',
-        'time_zone_id',
         'updated_by'
     ];
 

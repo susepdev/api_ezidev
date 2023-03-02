@@ -61,11 +61,13 @@ class TimezoneController extends Controller
             'updated_by'=> 'required',
         ]);
 
-        Timezone::where('id', $id)->update($data);
+        $input = Timezone::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => "Update Time Zone Success"
+            'message' => 'Update Timezone Success',
+            'data' => new TimezoneResource($input)
         ]);
     }
 

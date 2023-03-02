@@ -66,11 +66,13 @@ class RepairedPartStatusController extends Controller
             'updated_by' => 'required',
         ]);
 
-        RepairedPartStatus::where('id', $id)->update($data);
+        $input = RepairedPartStatus::FindOrFail($id);
+        $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => "Update Repaired Part Status Success"
+            'message' => 'Update Repaired Part Status Success',
+            'data' => new RepairedPartStatusResource($input)
         ]);
     }
 
