@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Saverity extends Model
+class Severity extends Model
 {
     use HasFactory;
-    protected $table = 'saverity';
+    protected $table = 'severity';
     protected $fillable = [
         'name', 
         'desc', 

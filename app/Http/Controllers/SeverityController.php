@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SeverityResource;
+use App\Models\Severity;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-use App\Http\Resources\SaverityResource;
-use App\Models\Saverity;
 
-class SaverityController extends Controller
+class SeverityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = SaverityResource::collection(Saverity::all());
+        $data = SeverityResource::collection(Severity::all());
         
         return response()->json([
             'success' => true,
-            'message' => 'Data Saverity',
+            'message' => 'Data Severity',
             'data' => $data
         ]);
     }
@@ -37,11 +37,11 @@ class SaverityController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = Saverity::create($data);
+        $input = Severity::create($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Created Saverity Success',
+            'message' => 'Created Severity Success',
             'data' => $input
         ]);
     }
@@ -51,7 +51,7 @@ class SaverityController extends Controller
      */
     public function show(string $id)
     {
-        return new SaverityResource(Saverity::findOrFail($id));
+        return new SeverityResource(Severity::findOrFail($id));
     }
 
     /**
@@ -66,13 +66,13 @@ class SaverityController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $input = Saverity::FindOrFail($id);
+        $input = Severity::FindOrFail($id);
         $input->update($data);
 
         return response()->json([
             'success' => true,
-            'message' => 'Update Saverity Success',
-            'data' => new SaverityResource($input)
+            'message' => 'Update Severity Success',
+            'data' => new SeverityResource($input)
         ]);
     }
 
@@ -81,10 +81,10 @@ class SaverityController extends Controller
      */
     public function destroy(string $id)
     {
-        Saverity::where('id', $id)->delete();
+        Severity::where('id', $id)->delete();
         return response()->json([
             'success' => true,
-            'message' => 'Saverity Deleted'
+            'message' => 'Severity Deleted'
         ]);
     }
 }
