@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('adr')->nullable();
             $table->string('city')->nullable();
             $table->string('prov')->nullable();
-            $table->foreignId('service_base_id')->constrained('service_base')->nullable();
-            $table->foreignId('time_zone_id')->constrained('time_zone')->nullable();
+            $table->integer('service_base_id')->nullable();
+            $table->integer('time_zone_id')->nullable();
             $table->string('updated_by')->nullable();
             $table->string('email')->unique();
             $table->string('password');
