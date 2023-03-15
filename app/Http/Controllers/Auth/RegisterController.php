@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -32,7 +33,7 @@ class RegisterController extends Controller
         ]);
 
         $user = User::create([
-            'user_id' => $request->user_id,
+            'user_id' => Str::random(8),
             'name' => $request->name,
             'email' => $request->email,
             'service_base_id' => $request->service_base_id,
