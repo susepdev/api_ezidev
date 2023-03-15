@@ -14,6 +14,7 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
+        
         $credentials = $request->validate([
             'email' => ['required'],
             'password' => ['required'],
@@ -21,6 +22,7 @@ class LoginController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
+            $user->tokens()->where('name', '<>', $request->device_name)->delete();
 
             return (new UserResource($user))->additional([
                 'token' => $user->createToken('myAppToken')->plainTextToken,
